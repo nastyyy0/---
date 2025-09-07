@@ -57,7 +57,7 @@ body {
   border-radius: 4px;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .btn-call:hover {
@@ -73,7 +73,7 @@ body {
 /* === Hero === */
 .hero {
   height: 80vh;
-  background: url('../img/hero-bg.jpg') center/cover no-repeat;
+  background: url("../img/hero-bg.jpg") center/cover no-repeat;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -83,7 +83,7 @@ body {
 }
 
 .hero::before {
-  content: '';
+  content: "";
   position: absolute;
   inset: 0;
   background: rgba(0, 0, 0, 0.45);
@@ -119,12 +119,65 @@ section,
   text-align: center;
 }
 
+.carousel-container {
+  position: relative;
+  overflow: hidden;
+  max-width: 100%;
+}
+
+.carousel-track-container {
+  overflow: hidden;
+}
+
+.carousel-track {
+  display: flex;
+  position: relative;
+  transition: transform 0.5s ease;
+  will-change: transform;
+}
+
+.carousel-slide {
+ flex: 0 0 auto;
+  width: auto; /* или auto, если хочешь адаптивность */
+  margin-right: 10px;
+  box-sizing: border-box;
+}
+
+.carousel-slide img {
+  width: 100%;
+  display: block;
+}
+
+.carousel-slide.current-slide img {
+  opacity: 1;
+}
+
+.carousel-nav {
+  display: flex;
+  justify-content: center;
+  margin-top: 15px;
+  gap: 8px;
+}
+
+.carousel-indicator {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: #ccc;
+  border: none;
+  cursor: pointer;
+}
+
+.carousel-indicator.current-slide {
+  background-color: #333;
+}
+
 .section-title {
   margin-top: 20px;
   text-align: center;
-    font-size: 32px;
-    margin-bottom: 30px;
-    font-weight: 700;
+  font-size: 32px;
+  margin-bottom: 30px;
+  font-weight: 700;
 }
 
 .section-subtitle {
@@ -200,7 +253,7 @@ section,
   border-radius: 8px;
   overflow: hidden;
   cursor: pointer;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
   transition: transform 0.3s ease;
 }
 
@@ -211,7 +264,7 @@ section,
 .catalog-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(0,0,0,0.45);
+  background: rgba(0, 0, 0, 0.45);
   color: white;
   padding: 20px;
   display: flex;
@@ -238,7 +291,7 @@ section,
 .contact-form-section {
   position: relative;
   height: 40vh;
-  background: url('../img/hero-bg.jpg') center/cover no-repeat;
+  background: url("../img/hero-bg.jpg") center/cover no-repeat;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -248,7 +301,7 @@ section,
 }
 
 .contact-form-section::before {
-  content: '';
+  content: "";
   position: absolute;
   inset: 0;
   background: rgba(0, 0, 0, 0.45);
@@ -311,7 +364,7 @@ section,
   margin: 0 10px;
   border-radius: 10px;
   overflow: hidden;
-  box-shadow: 6px 6px 15px 6px rgba(0,0,0,0.15);
+  box-shadow: 6px 6px 15px 6px rgba(0, 0, 0, 0.15);
   cursor: grab;
   user-select: none;
 }
@@ -336,7 +389,7 @@ section,
   height: 45px;
   border-radius: 6px;
   cursor: pointer;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
   transition: background 0.3s ease, transform 0.3s ease;
   user-select: none;
   z-index: 10;
@@ -395,48 +448,52 @@ section,
   overflow: hidden;
 }
 
+/* Обёртка слайдера */
 .review-slider {
   display: flex;
   align-items: center;
   position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
 }
 
+/* Трек, по которому двигаются слайды */
 .review-track {
   display: flex;
-  transition: transform 0.5s ease-in-out;
-}
-
-.review-slide {
-  display: flex;
-  flex-direction: row;
-  gap: 20px;
   align-items: center;
-  justify-content: space-between;
-  min-width: 100%;
+  height: 100%;
+  transition: transform 0.5s ease-in-out;
+  width: 100%; /* будет обновлено через JS */
 }
 
+/* Каждый отдельный слайд */
+.review-slide {
+  flex: 0 0 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+/* Текстовая часть */
 .review-text {
-  flex: 1;
-  padding: 10px;
+  text-align: center;
 }
 
 .review-text h3 {
   font-size: 18px;
-  margin-bottom: 8px;
   font-weight: 600;
+  margin-bottom: 5px;
 }
 
-.review-text p {
-  font-size: 15px;
-  line-height: 1.4;
-  color: #444;
-  padding-left: 40px;
-}
-
+/* Изображение */
 .review-image {
-  flex: 1;
-  max-width: 300px;
-  margin-right: 40px;
+  max-width: 320px;
+  width: 100%;
 }
 
 .review-image img {
@@ -444,6 +501,7 @@ section,
   border-radius: 8px;
   object-fit: cover;
 }
+
 
 .review-btn {
   position: absolute;
@@ -457,7 +515,7 @@ section,
   height: 45px;
   border-radius: 6px;
   cursor: pointer;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
   transition: background 0.3s ease, transform 0.3s ease;
   user-select: none;
   z-index: 10;
@@ -506,6 +564,67 @@ section,
   line-height: 1.4;
 }
 
+/* Кнопка */
+#openModalBtn {
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+/* Модальное окно */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0; top: 0;
+  width: 100%; height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+/* Контент внутри */
+.modal-content {
+  background: #fff;
+  padding: 20px;
+  width: 300px;
+  margin: 100px auto;
+  border-radius: 8px;
+  position: relative;
+  text-align: center;
+}
+
+.modal h3{
+  margin: 8px;
+}
+
+/* Кнопка закрытия */
+.close-btn {
+  position: absolute;
+  top: 10px; right: 15px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+/* Поля формы */
+.modal-content input {
+  font-size: 14px;
+  padding: 10px;
+  margin: 5px;
+}
+
+/* Кнопка отправки */
+.modal-content button[type="submit"] {
+  background: linear-gradient(180deg, #f6c642, #e8924c);
+  color: white;
+  border: none;
+  padding: 10px 24px;
+  font-size: 15px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  margin-top: 7px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
 
 /* === Адаптация === */
 @media (max-width: 1024px) {
@@ -544,7 +663,6 @@ section,
     font-size: 28px;
   }
 
-
   .contact-form {
     padding: 0 15px;
   }
@@ -574,92 +692,117 @@ section,
 
 /* === Мобильные устройства (до 600px) === */
 @media (max-width: 600px) {
+  /* Контейнеры */
   .container,
   section,
   .carousel-section,
   .curtain-catalog,
-  .contact-form-section {
+  .contact-form-section,
+  .reviews-container {
     padding-left: 10px;
     padding-right: 10px;
+    max-width: 100%;
+  }
+
+  /* Шапка */
+  .header-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    text-align: center;
   }
 
   .logo {
-    font-size: 20px;
+    font-size: 18px;
   }
 
   .phone {
     font-size: 14px;
   }
 
-  .btn-call {
-    font-size: 13px;
-    padding: 8px 16px;
-  }
-
+  /* Hero */
   .hero {
-    min-height: 60vh;
-    padding: 0 10px;
+    min-height: 50vh;
+    padding: 20px 10px;
   }
 
   .hero h1 {
-    font-size: 24px;
+    font-size: 20px;
   }
 
   .hero p {
-    font-size: 15px;
+    font-size: 14px;
   }
 
+  /* Преимущества */
   .adv-list {
     grid-template-columns: 1fr;
-    gap: 20px;
+    gap: 16px;
   }
 
+  .adv-item {
+    padding: 15px;
+  }
+
+  /* Каталог */
   .catalog-grid {
     grid-template-columns: 1fr;
     gap: 20px;
   }
 
   .catalog-item {
-    height: 280px;
+    height: 220px;
   }
 
-  .carousel-container {
+  /* Отзывы */
+  .review-slide {
+    flex-direction: column;
+    text-align: center;
+    gap: 10px;
+  }
+
+  .review-text {
+    padding: 0;
+  }
+
+  .review-text p {
+    padding-left: 0;
+    font-size: 14px;
+  }
+
+  .review-image {
+    max-width: 100%;
     margin: 0;
   }
 
+  /* Этапы */
+  .steps-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  /* Карусель */
   .carousel-slide {
-    min-width: 240px;
-    margin: 0 6px;
+    min-width: 200px;
   }
 
   .carousel-slide img {
-    height: 250px;
+    height: 200px;
   }
 
   .carousel-btn {
-    width: 38px;
-    height: 38px;
-    font-size: 24px;
+    width: 36px;
+    height: 36px;
+    font-size: 22px;
   }
 
-  .carousel-indicator {
-    width: 10px;
-    height: 10px;
-  }
-
+  /* Заголовки */
   .section-title {
-    font-size: 24px;
+    font-size: 22px;
+    margin-bottom: 20px;
   }
 
-
-  .contact-form input,
-  .contact-form textarea {
-    font-size: 13px;
-    padding: 8px;
-  }
-
-  .contact-form button {
+  .section-subtitle {
     font-size: 14px;
-    padding: 10px;
   }
 }
